@@ -27,4 +27,4 @@ def inference(model_inputs:dict) -> dict:
     result = tokenizer.batch_decode(outputs,skip_special_tokens=True)
 
     # Return the results as a dictionary
-    return result[0]
+    return result
