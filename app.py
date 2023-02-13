@@ -6,10 +6,10 @@ import torch
 def init():
     global model
     global tokenizer
-    device = 0 if torch.cuda.is_available() else -1
+   
     model_name = "VietAI/envit5-translation"
     tokenizer = AutoTokenizer.from_pretrained(model_name)  
-    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_name).to("cuda")
 
 # Inference is ran for every server call
 # Reference your preloaded global model variable here.
@@ -22,9 +22,8 @@ def inference(model_inputs:dict) -> dict:
         return {'message': "No prompt provided"}
     
     # Run the model
-    result_length = len(prompt)+100
-    inputs = tokenizer(prompt, return_tensors="pt", padding=True)
-    outputs = model.generate(inputs["input_ids"], max_length=result_length)
+    inputs = tokenizer(prompt, return_tensors="pt",padding=True).input_ids.to("cuda")
+    outputs = model.generate(inputs, max_length=512)
     result = tokenizer.decode(outputs[0],skip_special_tokens=True))
 
     # Return the results as a dictionary

@@ -1,0 +1,7 @@
+{
+    "name": "VietAI/envit5-translation",
+    "category": "Natural Language",
+    "example_input": {"prompt": "vi: VietAI là tổ chức phi lợi nhuận với sứ mệnh ươm mầm tài năng về trí tuệ nhân tạo và xây dựng một cộng đồng các chuyên gia trong lĩnh vực trí tuệ nhân tạo đẳng cấp quốc tế tại Việt Nam."},
+    "example_output": {"output": "en: VietAI is a non-profit organization with the mission of nurturing artificial intelligence talents and building an international - class community of artificial intelligence experts in Vietnam."},
+    "version": "1"
+}
